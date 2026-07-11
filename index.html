@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Padilla GPS — Rastreo satelital y protección vehicular en tiempo real</title>
+<meta name="description" content="Padilla GPS instala y monitorea sistemas de rastreo satelital para vehículos particulares, flotillas, camiones, motocicletas y maquinaria pesada. Localización en tiempo real, 24/7, con recuperación garantizada.">
+<meta name="theme-color" content="#070707">
+
+<!-- Favicon: pestaña del navegador, resultados de Google y accesos directos -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="images/favicon/favicon-48x48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon/android-chrome-512x512.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="msapplication-TileColor" content="#070707">
+<meta name="msapplication-TileImage" content="images/favicon/favicon-48x48.png">
+
+<!-- Open Graph -->
+<meta property="og:image" content="images/favicon/android-chrome-512x512.png">
+<meta property="og:title" content="Padilla GPS — Tu vehículo, siempre localizado">
+<meta property="og:description" content="Tecnología GPS profesional para proteger lo que más importa.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- ============================================================ NAV ============================================================ -->
+<header id="siteHeader">
+  <div class="container nav">
+    <a href="#top" class="brand">
+      <img src="images/logo.png" alt="Padilla GPS" class="brand-logo">
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#planes">Planes</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#monitoreo">Monitoreo</a>
+      <a href="#app">App</a>
+      <a href="#faq">Preguntas</a>
+      <a href="https://knoxgps.com/authentication/create" target="_blank" rel="noopener" class="nav-login-mobile">Iniciar sesión</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="https://knoxgps.com/authentication/create" target="_blank" rel="noopener" class="btn-login">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+        Iniciar sesión
+      </a>
+      <button type="button" class="btn btn-ghost btn-sm js-quote-open" data-vehicle-type="">Cotizar ahora</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero" id="top">
+  <div class="hero-bg"><canvas id="heroCanvas"></canvas></div>
+  <div class="hero-grid"></div>
+
+  <div class="container hero-inner">
+    <div>
+      <div class="eyebrow reveal"><span class="dot"></span> Monitoreo activo 24 / 7 / 365</div>
+      <h1 class="reveal">Tu vehículo,<br><span class="accent">siempre localizado.</span></h1>
+      <p class="hero-sub reveal">Tecnología GPS de nivel profesional para proteger lo que más importa: instalación certificada, rastreo en tiempo real y recuperación inmediata ante cualquier eventualidad.</p>
+
+      <div class="hero-actions reveal">
+        <button type="button" class="btn btn-primary js-quote-open" data-vehicle-type="">
+          Solicitar Cotización
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20cotizar%20la%20instalaci%C3%B3n%20de%20un%20GPS%20con%20Padilla%20GPS%20%F0%9F%9B%B0%EF%B8%8F%F0%9F%9A%97.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20precios%20y%20planes%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="btn btn-ghost">
+          <img src="images/ico.png" alt="WhatsApp" class="wa-icon-inline">
+          Hablar por WhatsApp
+        </a>
+      </div>
+
+      <div class="hero-coords reveal">
+        <span class="mono">LAT <span>19.4517° N</span></span>
+        <span class="mono">LNG <span>70.6970° W</span></span>
+        <span class="mono">SEÑAL <span>ESTABLE</span></span>
+      </div>
+    </div>
+
+    <div class="hud reveal" aria-hidden="true">
+      <img src="images/portada.png" alt="Padilla GPS — servicio de rastreo satelital" class="hud-photo">
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span>Desplázate</span><div class="line"></div></div>
+</section>
+
+<!-- ============================================================ TRUST BAND ============================================================ -->
+<div class="trust-band">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item reveal"><span class="num" data-count="98" data-suffix="%">0</span><div class="label">Clientes satisfechos</div></div>
+      <div class="trust-item reveal"><span class="num" data-static="24/7">0</span><div class="label">Monitoreo activo</div></div>
+      <div class="trust-item reveal"><span class="num" data-count="5000" data-suffix="+">0</span><div class="label">Vehículos protegidos</div></div>
+      <div class="trust-item reveal"><span class="num" data-count="15" data-suffix="+">0</span><div class="label">Años de experiencia</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ WHY CHOOSE ============================================================ -->
+<section id="por-que">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="tag">¿Por qué Padilla GPS?</div>
+      <h2 class="h2">Localización que no falla cuando más la necesitas.</h2>
+      <p class="section-sub">No vendemos un dispositivo, entregamos tranquilidad. Cada instalación pasa por control de calidad y queda respaldada por monitoreo humano, no solo por una app.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="why-index mono">01</span>
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Rastreo en tiempo real</h3>
+        <p>Ubicación exacta actualizada cada pocos segundos, sin retrasos ni zonas ciegas.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-index mono">02</span>
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5.2 3.8 9.6 9 11 5.2-1.4 9-5.8 9-11V6l-9-4z"/></svg></div>
+        <h3>Recuperación garantizada</h3>
+        <p>Protocolo de respuesta inmediata coordinado con autoridades ante robo o desvío de ruta.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-index mono">03</span>
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="M8 21h8M12 16v5"/></svg></div>
+        <h3>Instalación certificada</h3>
+        <p>Técnicos especializados, instalación oculta y verificación de señal antes de entregar el vehículo.</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-index mono">04</span>
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.11 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8.1 9.62a16 16 0 0 0 6.28 6.28l1.17-1.18a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Soporte 24/7</h3>
+        <p>Centro de monitoreo activo todos los días del año, con línea directa para emergencias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ SERVICES ============================================================ -->
+<section id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="tag">Servicios</div>
+      <h2 class="h2">Una solución de rastreo para cada tipo de vehículo.</h2>
+      <p class="section-sub">Desde el auto familiar hasta flotillas completas: el mismo estándar de precisión y seguridad, adaptado a lo que conduces. Toca un servicio para cotizarlo directo por WhatsApp.</p>
+    </div>
+
+    <div class="services-grid">
+      <a href="#" class="svc big reveal js-quote-open" data-vehicle-type="vehiculo">
+        <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=70" alt="Vehículo particular circulando de noche, monitoreado por GPS" loading="lazy">
+        <div class="big-overlay" aria-hidden="true"></div>
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+          <span class="svc-pill">Más solicitado</span>
+        </div>
+        <div class="svc-body">
+          <h3>GPS Personal</h3>
+          <p>Localización discreta y permanente para el vehículo de tu familia, con alertas de movimiento fuera de horario.</p>
+        </div>
+        <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20informaci%C3%B3n%20sobre%20el%20GPS%20Empresarial%20para%20control%20de%20activos%20vehiculares.%20%C2%BFC%C3%B3mo%20funciona%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="svc med reveal svc-cyan">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>GPS Empresarial</h3>
+          <p>Control centralizado de activos vehiculares con reportes de uso y productividad.</p>
+        </div>
+        <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20informaci%C3%B3n%20sobre%20GPS%20para%20Flotas.%20%C2%BFCu%C3%A1ntas%20unidades%20puedo%20monitorear%20desde%20un%20solo%20panel%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="svc small reveal svc-emerald">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94-3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>GPS para Flotas</h3>
+          <p>Monitorea decenas de unidades desde un solo panel, en tiempo real.</p>
+        </div>
+        <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a href="#" class="svc small reveal svc-amber js-quote-open" data-vehicle-type="camion">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.25 18.75a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM19.5 18.75a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/><path d="M2.25 5.25h14.25v10.5H2.25zM16.5 9.75h4.5l1.5 3.75V16.5h-6V9.75Z"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>GPS para Camiones</h3>
+          <p>Rutas, paradas y consumo bajo control, incluso en carga pesada.</p>
+        </div>
+        <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20informaci%C3%B3n%20sobre%20el%20GPS%20para%20Motocicletas.%20%C2%BFC%C3%B3mo%20es%20la%20instalaci%C3%B3n%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="svc med reveal svc-violet">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>GPS para Motocicletas</h3>
+          <p>Diseñado para el vehículo con mayor riesgo de robo: micro-instalación resistente a la intemperie.</p>
+        </div>
+        <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20informaci%C3%B3n%20sobre%20GPS%20para%20Maquinaria%20Pesada.%20%C2%BFProtege%20contra%20movimiento%20no%20autorizado%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="svc med reveal svc-orange">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11.42 15.17l5.83 5.83a2.652 2.652 0 0 0 3.75-3.75l-5.83-5.83M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a2.25 2.25 0 0 1-3.182-3.182l3.277-3.276a4.5 4.5 0 0 0-6.336 4.486c.048.58.024 1.193-.14 1.743"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>GPS para Maquinaria Pesada</h3>
+          <p>Protege excavadoras, grúas y equipo industrial contra movimiento no autorizado.</p>
+        </div>
+        <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20informaci%C3%B3n%20sobre%20C%C3%A1maras%20Vehiculares%20(dash%20cam%2C%20reversa%2C%20sensores).%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="svc small reveal svc-rose">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316z"/><path d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0zM18.75 10.5h.008v.008h-.008V10.5z"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>Cámaras Vehiculares</h3>
+          <p>Dash cam, cámaras de reversa y sensores de parqueo.</p>
+        </div>
+        <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+
+      <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20informaci%C3%B3n%20sobre%20Accesorios%20(radios%2C%20alarmas%2C%20luces%20LED%2C%20sensores).%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="svc small reveal svc-fuchsia">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.128l1.41-.513M5.106 17.785l1.15-.827m11.379-8.16l1.15-.827M8.14 21.27l.707-1.03m6.608-9.622l.707-1.03M12 3v1.5m0 15V21m-3.077-2.543l-.513-1.41M19.62 6.175l-.513-1.41m-2.132 14.167l-.827-1.15M7.042 6.223l-.827-1.15M3.557 15.312l-1.03-.707m16.293-6.608l-1.03-.707"/></svg></div>
+        </div>
+        <div class="svc-body">
+          <h3>Accesorios</h3>
+          <p>Radios Android, alarmas, luces LED y sensores instalados por el mismo equipo.</p>
+        </div>
+        <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ HOW IT WORKS ============================================================ -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="tag">Proceso</div>
+      <h2 class="h2">De la cita a la protección total, en un solo día.</h2>
+      <p class="section-sub">Un flujo de trabajo diseñado por técnicos, pensado para no interrumpir tu rutina.</p>
+    </div>
+
+    <div class="process" id="processFlow">
+      <div class="step reveal">
+        <div class="step-num mono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="M8 21h8M12 16v5"/></svg>
+          <span class="step-index">01</span>
+        </div>
+        <h3>Diagnóstico</h3>
+        <p>Evaluamos tu vehículo y el nivel de protección que necesitas.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num mono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <span class="step-index">02</span>
+        </div>
+        <h3>Instalación</h3>
+        <p>Colocación oculta y certificada por un técnico especializado.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num mono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15a4 4 0 0 1 4-4h.3A6 6 0 0 1 20 13a3.5 3.5 0 0 1-1 6.86H7a3 3 0 0 1-3-3z"/></svg>
+          <span class="step-index">03</span>
+        </div>
+        <h3>Activación</h3>
+        <p>Vinculamos el dispositivo a tu cuenta y verificamos la señal en vivo.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num mono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span class="step-index">04</span>
+        </div>
+        <h3>Monitoreo</h3>
+        <p>Tu vehículo queda bajo vigilancia permanente, 24 horas al día.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num mono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5.2 3.8 9.6 9 11 5.2-1.4 9-5.8 9-11V6l-9-4z"/></svg>
+          <span class="step-index">05</span>
+        </div>
+        <h3>Protección</h3>
+        <p>Respuesta inmediata y recuperación coordinada ante cualquier eventualidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PLANES ============================================================ -->
+<section id="planes">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="tag">Planes</div>
+      <h2 class="h2">Un solo precio, control total desde tu celular.</h2>
+      <p class="section-sub">Instalación incluida. Sin letras pequeñas: el precio que ves es el precio que pagas.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-kicker">Motocicletas</div>
+        <h3>Plan Motor Seguro</h3>
+        <p class="price-desc">Protección de alta seguridad diseñada para el vehículo más vulnerable al robo.</p>
+        <div class="price-value"><span class="currency">RD$</span><span class="amount">5,990</span></div>
+        <div class="price-note">Pago único · instalación incluida</div>
+        <ul class="price-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Ubicación en tiempo real</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Apagado remoto del motor</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Historial de recorridos</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Instalación profesional</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>1 año de servicio incluido</li>
+        </ul>
+        <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20cotizar%20el%20Plan%20Motor%20Seguro%20%F0%9F%8F%8D%EF%B8%8F%F0%9F%94%92%20para%20mi%20motocicleta.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20detalles%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="btn btn-ghost">Solicitar este plan</a>
+      </div>
+
+      <div class="price-card featured reveal">
+        <span class="price-badge">Más contratado</span>
+        <div class="price-kicker">Vehículos y camiones</div>
+        <h3>Plan Control Total</h3>
+        <p class="price-desc">Ideal para autos particulares, camiones y flotillas empresariales.</p>
+        <div class="price-value"><span class="currency">RD$</span><span class="amount">6,500</span></div>
+        <div class="price-note">Pago único · instalación incluida</div>
+        <ul class="price-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Ubicación en tiempo real</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Apagado remoto del motor</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Gestión de vehículos y flotillas</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Ahorra combustible y tiempo</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Soporte técnico 24/7</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Instalación profesional incluida</li>
+        </ul>
+        <button type="button" class="btn btn-primary js-quote-open" data-vehicle-type="">Solicitar este plan</button>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-kicker">Flotas empresariales</div>
+        <h3>Plan Flotas</h3>
+        <p class="price-desc">Cobertura y panel centralizado para empresas con múltiples unidades.</p>
+        <div class="price-value custom"><span class="amount">Personalizado</span></div>
+        <div class="price-note">Cotización según cantidad de unidades</div>
+        <ul class="price-list">
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Panel único para toda la flota</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Reportes de productividad</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Precios preferenciales por volumen</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Ejecutivo de cuenta dedicado</li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Soporte técnico 24/7</li>
+        </ul>
+        <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Tengo%20una%20flota%20de%20veh%C3%ADculos%20y%20quiero%20cotizar%20el%20Plan%20Flotas%20empresarial.%20%C2%BFPodr%C3%ADan%20darme%20m%C3%A1s%20detalles%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="btn btn-ghost">Cotizar mi flota</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ STATS ============================================================ -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num" data-static="&lt;1h">0</div><div class="label">Tiempo promedio de instalación</div></div>
+      <div class="stat reveal"><div class="num" data-count="6" data-suffix="+">0</div><div class="label">Ciudades con cobertura activa</div></div>
+      <div class="stat reveal"><div class="num" data-count="12" data-suffix=" meses">0</div><div class="label">Garantía en equipos instalados</div></div>
+      <div class="stat reveal"><div class="num" data-static="Inmediata">0</div><div class="label">Respuesta ante robo</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ MONITOREO EN TIEMPO REAL ============================================================ -->
+<section id="monitoreo">
+  <div class="monitor-glow-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="monitor-grid">
+
+      <div class="monitor-copy reveal-left">
+        <div class="monitor-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-7.5 7-12A7 7 0 0 0 5 10c0 4.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/><circle cx="12" cy="10" r="6.4" stroke-dasharray="1 4" opacity=".5"/></svg>
+        </div>
+        <div class="tag">Plataforma Padilla GPS</div>
+        <h2 class="h2">Monitoreo en tiempo real, desde cualquier lugar.</h2>
+        <p class="section-sub">Consulta la ubicación exacta de cada vehículo, revisa su historial de recorridos y activa alertas instantáneas desde una plataforma pensada para darte control total de tu flota, en cualquier momento y desde cualquier dispositivo.</p>
+
+        <ul class="monitor-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-12A7 7 0 0 0 5 10c0 4.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Ubicación en vivo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Historial de recorridos</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5-3 8-7 8-12V6l-8-3-8 3v4c0 5 2.5 9 8 12z"/></svg>Alertas instantáneas</li>
+        </ul>
+
+        <a href="#planes" class="btn btn-primary">
+          Ver planes
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="monitor-visual reveal-right">
+        <div class="monitor-frame">
+          <div class="monitor-frame-bar">
+            <span class="monitor-dot"></span><span class="monitor-dot"></span><span class="monitor-dot"></span>
+            <span class="monitor-frame-label mono">app.padillagps.com</span>
+            <span class="monitor-live mono"><span class="monitor-live-dot"></span>EN VIVO</span>
+          </div>
+          <div class="monitor-frame-img">
+            <img src="images/knox.png" alt="Plataforma Padilla GPS mostrando el monitoreo en tiempo real de un vehículo" width="1917" height="967">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="monitor-grid monitor-grid-reverse">
+
+      <div class="monitor-visual reveal-left">
+        <div class="monitor-frame">
+          <div class="monitor-frame-bar">
+            <span class="monitor-dot"></span><span class="monitor-dot"></span><span class="monitor-dot"></span>
+            <span class="monitor-frame-label mono">cam.padillagps.com</span>
+            <span class="monitor-live mono"><span class="monitor-live-dot"></span>EN VIVO</span>
+          </div>
+          <div class="monitor-frame-img">
+            <img src="images/webcam.png" alt="Cámara de vigilancia instalada en un vehículo, transmisión de video en tiempo real" loading="lazy" width="1448" height="1086">
+          </div>
+        </div>
+      </div>
+
+      <div class="monitor-copy reveal-right">
+        <div class="monitor-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 7 16 12l7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="tag">Vigilancia por cámara</div>
+        <h3 class="h2">Video en tiempo real, cámara en cada vehículo.</h3>
+        <p class="section-sub">Además del rastreo satelital, instalamos cámaras de video en el vehículo para que veas en vivo lo que ocurre dentro y fuera de él, con grabación continua y acceso remoto desde tu celular.</p>
+
+        <ul class="monitor-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7 16 12l7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Video en vivo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 5v1M12 18v1M5 12h1M18 12h1M7.05 7.05l.7.7M16.25 16.25l.7.7M7.05 16.95l.7-.7M16.25 7.75l.7-.7"/></svg>Grabación continua</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Acceso remoto desde el celular</li>
+        </ul>
+
+        <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20cotizar%20la%20instalaci%C3%B3n%20de%20c%C3%A1maras%20de%20video%20en%20mi%20veh%C3%ADculo%20(video%20en%20vivo%2C%20grabaci%C3%B3n%20continua%20y%20acceso%20remoto)%20con%20Padilla%20GPS%20%F0%9F%93%B9.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20precios%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="btn btn-primary">
+          Cotizar cámaras
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ APP MÓVIL ============================================================ -->
+<section id="app">
+  <div class="app-glow-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="app-grid">
+
+      <div class="app-copy reveal-left">
+        <div class="monitor-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2.4"/><path d="M11 18h2"/></svg>
+        </div>
+        <div class="tag">App móvil</div>
+        <h2 class="h2">Lleva Padilla GPS contigo, a donde vayas con Knox Track.</h2>
+        <p class="section-sub">Descarga la app oficial y monitorea tus vehículos, revisa el historial de recorridos y recibe alertas instantáneas directo en tu celular, sin importar dónde estés.</p>
+
+        <ul class="monitor-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Notificaciones push en tiempo real</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-12A7 7 0 0 0 5 10c0 4.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Mapa en vivo desde tu celular</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Historial y reportes al alcance de un toque</li>
+        </ul>
+
+        <div class="store-badges">
+          <a href="https://play.google.com/store/apps/details?id=com.knoxgps.app&hl=es_DO&gl=US" target="_blank" rel="noopener" class="store-badge" aria-label="Descargar en Google Play">
+            <img src="images/play-store.png" alt="Disponible en Google Play" loading="lazy">
+          </a>
+          <a href="https://apps.apple.com/us/app/knox-track/id6466385571" target="_blank" rel="noopener" class="store-badge" aria-label="Descargar en App Store">
+            <img src="images/app-store.png" alt="Disponible en App Store" loading="lazy">
+          </a>
+        </div>
+      </div>
+
+      <div class="app-visual reveal-right">
+        <div class="phone-mock">
+          <img src="images/mockup-telefono.png" alt="App Knox Track de Padilla GPS abierta en un teléfono, mostrando el mapa en vivo" class="phone-mock-img">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox (used by gallery) -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lightbox-frame">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <img src="" alt="" id="lightboxImg">
+    <button class="lightbox-next" id="lightboxNext" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    <div class="lightbox-cap" id="lightboxCap"></div>
+  </div>
+</div>
+
+<!-- ============================================================ FAQ ============================================================ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="tag">Preguntas frecuentes</div>
+      <h2 class="h2">Todo lo que necesitas saber antes de instalar.</h2>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item reveal">
+        <button class="faq-q">¿Cuánto tiempo toma la instalación?<span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><p>La mayoría de las instalaciones se completan en menos de una hora, sin necesidad de dejar el vehículo en taller durante días.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">¿El GPS se puede detectar o remover fácilmente?<span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><p>La instalación es oculta y se ubica en puntos no visibles ni accesibles a simple vista, siguiendo un protocolo distinto según el modelo del vehículo.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">¿Qué pasa si mi vehículo es robado?<span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><p>Nuestro centro de monitoreo activa un protocolo de rastreo inmediato y coordina con las autoridades para agilizar la recuperación.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">¿Puedo monitorear varios vehículos a la vez?<span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><p>Sí. Nuestros planes empresariales y de flotas permiten ver todas tus unidades desde un solo panel de control.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">¿Ofrecen garantía en el equipo instalado?<span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><p>Todos los equipos cuentan con garantía y soporte técnico continuo durante la vigencia de tu plan de monitoreo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FINAL CTA ============================================================ -->
+<section id="contacto">
+  <div class="container">
+    <div class="cta-panel reveal">
+      <div class="cta-eyebrow"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:#3ddc84;display:inline-block;"></span> Respuesta inmediata por WhatsApp</div>
+      <h2>Cada minuto sin rastreo es un riesgo que no necesitas correr.</h2>
+      <p>Agenda tu instalación hoy y ten tu vehículo bajo vigilancia activa antes del final del día.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20agendar%20mi%20instalaci%C3%B3n%20de%20GPS%20con%20Padilla%20GPS%20hoy%20mismo%20%F0%9F%9B%B0%EF%B8%8F%F0%9F%9A%A8.%20%C2%BFC%C3%B3mo%20empezamos%3F%20%E2%9C%85" target="_blank" rel="noopener" class="btn btn-primary">
+          <img src="images/ico.png" alt="WhatsApp" class="wa-icon-inline">
+          Escribir por WhatsApp
+        </a>
+        <a href="tel:+118295486665" class="btn btn-ghost">Llamar ahora</a>
+      </div>
+      <div class="cta-trust">
+        <div class="cta-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5.2 3.8 9.6 9 11 5.2-1.4 9-5.8 9-11V6l-9-4z"/></svg>Instalación certificada</div>
+        <div class="cta-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Monitoreo 24/7</div>
+        <div class="cta-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"/><path d="M8 21h8M12 16v5"/></svg>Garantía incluida</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <img src="images/logo.png" alt="Padilla GPS" class="brand-logo">
+        </div>
+        <p>Tecnología de rastreo satelital y protección vehicular con monitoreo humano permanente.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61561187117105&amp;locale=es_LA" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/padillagps031?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20cotizar%20la%20instalaci%C3%B3n%20de%20un%20GPS%20con%20Padilla%20GPS%20%F0%9F%9B%B0%EF%B8%8F%F0%9F%9A%97.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20precios%20y%20planes%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="images/ico.png" alt="WhatsApp"></a>
+        </div>
+        <div class="footer-badges">
+          <span class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Instalación certificada</span>
+          <span class="footer-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Monitoreo 24/7</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">GPS Personal</a></li>
+          <li><a href="#servicios">GPS Empresarial</a></li>
+          <li><a href="#servicios">GPS para Flotas</a></li>
+          <li><a href="#servicios">Cámaras Vehiculares</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#por-que">Por qué elegirnos</a></li>
+          <li><a href="#planes">Planes y precios</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#app">App móvil</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.11 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8.1 9.62a16 16 0 0 0 6.28 6.28l1.17-1.18a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+118295486665">+1 (829) 548-6665</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg><a href="mailto:samuel911padillaa@gmail.com">samuel911padillaa@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-12A7 7 0 0 0 5 10c0 4.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><a href="#top">Santiago de los Caballeros, RD</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Padilla GPS. Todos los derechos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+
+<a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20agendar%20mi%20instalaci%C3%B3n%20de%20GPS%20con%20Padilla%20GPS%20hoy%20mismo%20%F0%9F%9B%B0%EF%B8%8F%F0%9F%9A%A8.%20%C2%BFC%C3%B3mo%20empezamos%3F%20%E2%9C%85" target="_blank" rel="noopener" class="wa-float" aria-label="Escribir por WhatsApp">
+  <img src="images/ico.png" alt="WhatsApp">
+</a>
+
+<!-- ============================================================ MODAL: COTIZADOR ============================================================ -->
+<div class="quote-overlay" id="quoteOverlay" aria-hidden="true">
+  <div class="quote-modal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
+    <button type="button" class="quote-close" id="quoteClose" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <div class="quote-head">
+      <div class="tag">Cotizador rápido</div>
+      <h3 id="quoteTitle">Cuéntanos sobre tu vehículo</h3>
+      <p>Con estos datos te damos un precio más exacto por WhatsApp.</p>
+    </div>
+
+    <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20cotizar%20la%20instalaci%C3%B3n%20de%20un%20GPS%20con%20Padilla%20GPS%20%F0%9F%9B%B0%EF%B8%8F%F0%9F%9A%97.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20precios%20y%20planes%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="quote-skip">
+      <img src="images/ico.png" alt="" class="wa-icon-inline">
+      <span>Prefiero saltar esto y hablar directo por WhatsApp</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <form id="quoteForm">
+      <div class="quote-field">
+        <label>¿Qué vas a cotizar?</label>
+        <div class="quote-type-grid">
+          <button type="button" class="quote-type-btn" data-type="vehiculo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.6-4.8A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.2L21 13v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5Z"/><circle cx="7.5" cy="16.5" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></svg>
+            <span>Vehículo</span>
+          </button>
+          <button type="button" class="quote-type-btn" data-type="camion">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.25 5.25h14.25v10.5H2.25zM16.5 9.75h4.5l1.5 3.75V16.5h-6V9.75Z"/><circle cx="6.75" cy="18.75" r="1.5"/><circle cx="18" cy="18.75" r="1.5"/></svg>
+            <span>Camión</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="quote-field">
+        <label for="quoteMarca">Marca</label>
+        <input type="text" id="quoteMarca" name="marca" placeholder="Ej. Toyota, Hyundai, Kia…" autocomplete="off">
+      </div>
+
+      <div class="quote-field-row">
+        <div class="quote-field">
+          <label for="quoteModelo">Modelo</label>
+          <input type="text" id="quoteModelo" name="modelo" placeholder="Ej. Corolla, Tucson…" autocomplete="off">
+        </div>
+        <div class="quote-field">
+          <label for="quoteAnio">Año</label>
+          <input type="text" inputmode="numeric" id="quoteAnio" name="anio" placeholder="Ej. 2021" autocomplete="off">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary quote-submit">
+        Enviar cotización por WhatsApp
+        <img src="images/ico.png" alt="" class="wa-icon-inline">
+      </button>
+    </form>
+  </div>
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
