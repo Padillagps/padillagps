@@ -29,8 +29,8 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth; touch-action:pan-x pan-y; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
-body{touch-action:pan-x pan-y;}
+html{scroll-behavior:smooth; touch-action:pan-x pan-y; -webkit-text-size-adjust:100%; text-size-adjust:100%; overflow-x:hidden; width:100%; position:relative;}
+body{touch-action:pan-x pan-y; overflow-x:hidden; width:100%; position:relative;}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
   *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
