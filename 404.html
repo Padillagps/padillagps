@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Página no encontrada — Padilla GPS</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070707">
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .nf-wrap{
+    min-height:100svh; display:flex; flex-direction:column;
+  }
+  .nf-main{
+    flex:1; display:flex; align-items:center; justify-content:center;
+    padding:120px 24px 80px;
+  }
+  .nf-content{ max-width:560px; text-align:center; }
+  .nf-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--blue-soft); background:rgba(37,99,235,.1); border:1px solid rgba(37,99,235,.28);
+    padding:7px 14px; border-radius:99px; margin-bottom:28px;
+  }
+  .nf-badge .dot{ width:6px; height:6px; border-radius:50%; background:#EF4444; box-shadow:0 0 8px #EF4444; }
+  .nf-pin{ width:112px; height:auto; margin:0 auto 28px; opacity:.92; }
+  .nf-code{
+    font-family:var(--display); font-weight:700; font-size:clamp(64px,12vw,104px);
+    line-height:1; letter-spacing:-.02em;
+    background:linear-gradient(180deg,var(--white),rgba(255,255,255,.35));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    margin-bottom:4px;
+  }
+  .nf-title{ font-family:var(--display); font-weight:600; font-size:clamp(20px,3vw,26px); margin-bottom:14px; }
+  .nf-text{ color:var(--ink-60); font-size:15.5px; line-height:1.65; margin-bottom:36px; }
+  .nf-text a{ color:var(--blue-soft); text-decoration:none; }
+  .nf-text a:hover{ text-decoration:underline; }
+  .nf-actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  @media (max-width:480px){ .nf-actions{ flex-direction:column; } .nf-actions .btn{ width:100%; justify-content:center; } }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<div class="nf-wrap">
+
+  <!-- ============================================================ NAV ============================================================ -->
+  <header id="siteHeader" class="scrolled">
+    <div class="container nav">
+      <a href="/" class="brand">
+        <img src="images/logo.webp" alt="Padilla GPS" class="brand-logo">
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/#servicios">Servicios</a>
+        <a href="/#planes">Planes</a>
+        <a href="/#como-funciona">Cómo funciona</a>
+        <a href="/#monitoreo">Monitoreo</a>
+        <a href="/#app">App</a>
+        <a href="/#faq">Preguntas</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="/" class="btn btn-primary btn-sm">Volver al inicio</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+
+  <!-- ============================================================ 404 ============================================================ -->
+  <main class="nf-main">
+    <div class="nf-content">
+      <div class="nf-badge"><span class="dot"></span>Señal no encontrada</div>
+
+      <svg class="nf-pin" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 6C33 6 12 27 12 54c0 38 48 90 48 90s48-52 48-90C108 27 87 6 60 6Z" stroke="var(--blue-bright)" stroke-width="4" stroke-dasharray="7 7" opacity=".55"/>
+        <circle cx="60" cy="56" r="27" fill="var(--surface-2)" stroke="var(--blue-bright)" stroke-width="3"/>
+        <path d="M46 62 L52 44 L60 62 L68 44 L74 62" stroke="var(--blue-soft)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity=".85"/>
+        <circle cx="60" cy="56" r="4" fill="var(--blue-soft)"/>
+      </svg>
+
+      <div class="nf-code">404</div>
+      <h1 class="nf-title">No pudimos ubicar esta página</h1>
+      <p class="nf-text">
+        El enlace puede estar roto o la página ya no existe. Si crees que esto es un error,
+        escríbenos por <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Entr%C3%A9%20a%20un%20enlace%20de%20la%20p%C3%A1gina%20que%20marc%C3%B3%20error%20404%2C%20%C2%BFme%20pueden%20ayudar%3F" target="_blank" rel="noopener">WhatsApp</a>
+        y lo revisamos.
+      </p>
+
+      <div class="nf-actions">
+        <a href="/" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+          Volver al inicio
+        </a>
+        <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Entr%C3%A9%20a%20un%20enlace%20de%20la%20p%C3%A1gina%20que%20marc%C3%B3%20error%20404%2C%20%C2%BFme%20pueden%20ayudar%3F" target="_blank" rel="noopener" class="btn btn-ghost">
+          <img src="images/ico.webp" alt="" class="wa-icon-inline">
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================ FOOTER ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <span>© 2026 Padilla GPS. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

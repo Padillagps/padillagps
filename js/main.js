@@ -188,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Hero canvas: drifting particles + connecting lines ---------- */
   const canvas = document.getElementById('heroCanvas');
+  if (canvas) {
   const ctx = canvas.getContext('2d');
   let w, h, particles = [];
   const PCOUNT = window.innerWidth < 700 ? 34 : 60;
@@ -234,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setup();
   window.addEventListener('resize', () => { resize(); });
   requestAnimationFrame(draw);
+  }
 
   /* ---------- Gallery lightbox ---------- */
   const galleryGrid = document.getElementById('galleryGrid');
