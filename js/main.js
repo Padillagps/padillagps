@@ -1,3 +1,14 @@
+/* ---------- Bloqueo de zoom en iOS (Safari ignora user-scalable=no) ---------- */
+document.addEventListener('gesturestart', (e) => e.preventDefault());
+document.addEventListener('gesturechange', (e) => e.preventDefault());
+document.addEventListener('gestureend', (e) => e.preventDefault());
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (e) => {
+  const now = Date.now();
+  if (now - lastTouchEnd <= 300) e.preventDefault(); // evita zoom por doble-tap
+  lastTouchEnd = now;
+}, { passive: false });
+
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- Lucide (icons already inline as raw SVG, kept for future use) ---------- */
