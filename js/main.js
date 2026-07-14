@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
     requestAnimationFrame(loop);
   })();
-  document.querySelectorAll('a, button, .why-card, .svc, .faq-q, .price-card, .gallery figure, .coverage-item').forEach(el => {
+  document.querySelectorAll('a, button, .why-card, .svc, .faq-q, .price-card, .gallery figure, .coverage-item, .review-card, .audio-float').forEach(el => {
     el.addEventListener('mouseenter', () => ring.classList.add('is-active'));
     el.addEventListener('mouseleave', () => ring.classList.remove('is-active'));
   });
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const revealRightEls = document.querySelectorAll('.reveal-right');
 
   /* stagger amount for cards that share a grid/list parent, so groups cascade in elegantly */
-  const staggerParents = ['.why-grid', '.services-grid', '.process', '.pricing-grid', '.gallery', '.coverage-list', '.faq', '.trust-grid'];
+  const staggerParents = ['.why-grid', '.services-grid', '.process', '.pricing-grid', '.gallery', '.coverage-list', '.faq', '.trust-grid', '.reviews-grid'];
   const staggerMap = new WeakMap();
   staggerParents.forEach(sel => {
     document.querySelectorAll(sel).forEach(parent => {
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', e => {
       e.preventDefault();
 
-      const tipoLabel = selectedType === 'camion' ? 'camión' : selectedType === 'vehiculo' ? 'vehículo' : 'vehículo';
+      const tipoLabel = selectedType === 'camion' ? 'camión' : selectedType === 'moto' ? 'motocicleta' : 'vehículo';
       const marca = marcaInput.value.trim();
       const modelo = modeloInput.value.trim();
       const anio = anioInput.value.trim();
@@ -352,6 +352,155 @@ document.addEventListener('DOMContentLoaded', function () {
       window.open(url, '_blank', 'noopener');
       closeModal();
     });
+  })();
+
+  /* ---------- Modal: Agendar cita (vehículo + datos de contacto + fecha/hora) ---------- */
+  (function () {
+    const overlay = document.getElementById('appointmentOverlay');
+    if (!overlay) return;
+
+    const modal = overlay.querySelector('.quote-modal');
+    const closeBtn = document.getElementById('appointmentClose');
+    const form = document.getElementById('appointmentForm');
+    const typeBtns = overlay.querySelectorAll('.quote-type-btn');
+    const marcaInput = document.getElementById('apptMarca');
+    const modeloInput = document.getElementById('apptModelo');
+    const anioInput = document.getElementById('apptAnio');
+    const nombreInput = document.getElementById('apptNombre');
+    const correoInput = document.getElementById('apptCorreo');
+    const telefonoInput = document.getElementById('apptTelefono');
+    const fechaInput = document.getElementById('apptFecha');
+    const horaInput = document.getElementById('apptHora');
+
+    const WHATSAPP_NUMBER = '18295486665';
+    let selectedType = '';
+    let lastFocused = null;
+
+    /* No se pueden agendar citas en fechas pasadas */
+    if (fechaInput) {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      fechaInput.min = `${yyyy}-${mm}-${dd}`;
+    }
+
+    function setType(type) {
+      selectedType = type;
+      typeBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.type === type));
+    }
+
+    function openModal(presetType) {
+      lastFocused = document.activeElement;
+      setType(presetType || '');
+      form.reset();
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('quote-open');
+      setTimeout(() => nombreInput.focus(), 250);
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('quote-open');
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.js-appointment-open').forEach(trigger => {
+      trigger.addEventListener('click', e => {
+        e.preventDefault();
+        openModal(trigger.dataset.vehicleType || '');
+      });
+    });
+
+    typeBtns.forEach(btn => btn.addEventListener('click', () => setType(btn.dataset.type)));
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+
+    function formatFecha(value) {
+      if (!value) return '';
+      const [y, m, d] = value.split('-');
+      return `${d}/${m}/${y}`;
+    }
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const tipoLabel = selectedType === 'camion' ? 'camión' : selectedType === 'moto' ? 'motocicleta' : 'vehículo';
+      const marca = marcaInput.value.trim();
+      const modelo = modeloInput.value.trim();
+      const anio = anioInput.value.trim();
+      const nombre = nombreInput.value.trim();
+      const correo = correoInput.value.trim();
+      const telefono = telefonoInput.value.trim();
+      const fecha = formatFecha(fechaInput.value);
+      const hora = horaInput.value;
+
+      let msg = `¡Hola! 👋 Quiero agendar una cita para instalar un GPS en mi ${tipoLabel}.`;
+      const vehiculoDetails = [];
+      if (marca) vehiculoDetails.push(`Marca: ${marca}`);
+      if (modelo) vehiculoDetails.push(`Modelo: ${modelo}`);
+      if (anio) vehiculoDetails.push(`Año: ${anio}`);
+      if (vehiculoDetails.length) msg += ` ${vehiculoDetails.join(', ')}.`;
+
+      msg += `\n\nMis datos:\nNombre: ${nombre}`;
+      if (correo) msg += `\nCorreo: ${correo}`;
+      msg += `\nTeléfono: ${telefono}`;
+      if (fecha) msg += `\nFecha preferida: ${fecha}`;
+      if (hora) msg += `\nHorario preferido: ${hora}`;
+      msg += '\n\n¿Me confirman disponibilidad? 📅✅';
+
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank', 'noopener');
+      closeModal();
+    });
+  })();
+
+  /* ---------- Audio flotante de bienvenida ---------- */
+  (function () {
+    const btn = document.getElementById('audioToggle');
+    const audio = document.getElementById('siteAudio');
+    if (!btn || !audio) return;
+
+    function setPlayingUI(isPlaying) {
+      btn.classList.toggle('is-playing', isPlaying);
+      btn.setAttribute('aria-pressed', String(isPlaying));
+      if (isPlaying) btn.classList.remove('show-tooltip');
+    }
+
+    function showTooltip() { btn.classList.add('show-tooltip'); }
+    function hideTooltip() { btn.classList.remove('show-tooltip'); }
+
+    /* Intenta reproducir automáticamente al entrar; si el navegador lo bloquea
+       (política de autoplay con sonido), mostramos la burbuja "Toca aquí". */
+    const playPromise = audio.play();
+    if (playPromise && typeof playPromise.then === 'function') {
+      playPromise
+        .then(() => setPlayingUI(true))
+        .catch(() => { setPlayingUI(false); showTooltip(); });
+    }
+
+    /* Si tras un momento sigue sin sonar (autoplay bloqueado sin lanzar
+       promesa clara en algunos navegadores), igual mostramos el aviso. */
+    setTimeout(() => { if (audio.paused) showTooltip(); }, 900);
+
+    btn.addEventListener('click', () => {
+      hideTooltip();
+      if (audio.paused) {
+        audio.play().then(() => setPlayingUI(true)).catch(() => setPlayingUI(false));
+      } else {
+        audio.pause();
+        setPlayingUI(false);
+      }
+    });
+
+    audio.addEventListener('play', () => setPlayingUI(true));
+    audio.addEventListener('pause', () => setPlayingUI(false));
   })();
 
 });

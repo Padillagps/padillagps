@@ -55,6 +55,7 @@
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#monitoreo">Monitoreo</a>
       <a href="#app">App</a>
+      <a href="#resenas">Reseñas</a>
       <a href="#faq">Preguntas</a>
       <a href="https://knoxgps.com/authentication/create" target="_blank" rel="noopener" class="nav-login-mobile">Iniciar sesión</a>
     </nav>
@@ -64,7 +65,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
         Iniciar sesión
       </a>
-      <button type="button" class="btn btn-ghost btn-sm js-quote-open" data-vehicle-type="">Cotizar ahora</button>
+      <button type="button" class="btn btn-ghost btn-sm js-appointment-open" id="btnAgendarNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Agendar ahora
+      </button>
       <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -100,7 +104,12 @@
     </div>
 
     <div class="hud reveal" aria-hidden="true">
-      <img src="images/portada.webp" alt="Padilla GPS — servicio de rastreo satelital" class="hud-photo">
+      <img src="images/portada.webp" alt="Equipo Padilla GPS — servicio de rastreo satelital" class="hud-photo">
+      <span class="hud-corner tl"></span>
+      <span class="hud-corner tr"></span>
+      <span class="hud-corner bl"></span>
+      <span class="hud-corner br"></span>
+      <span class="hud-tag"><span class="dot"></span>Padilla GPS</span>
     </div>
   </div>
 
@@ -152,6 +161,18 @@
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.11 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.62a2 2 0 0 1-.45 2.11L8.1 9.62a16 16 0 0 0 6.28 6.28l1.17-1.18a2 2 0 0 1 2.11-.45c.84.3 1.72.51 2.62.63A2 2 0 0 1 22 16.92z"/></svg></div>
         <h3>Soporte 24/7</h3>
         <p>Centro de monitoreo activo todos los días del año, con línea directa para emergencias.</p>
+      </div>
+
+      <div class="why-card why-card-highlight reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.25 18.75a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM19.5 18.75a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/><path d="M2.25 5.25h14.25v10.5H2.25zM16.5 9.75h4.5l1.5 3.75V16.5h-6V9.75Z"/></svg></div>
+        <div class="why-copy">
+          <h3>Servicio a Domicilio</h3>
+          <p>En Padilla GPS llevamos la seguridad hasta donde usted se encuentre. Contamos con servicio de instalación a domicilio en toda la República Dominicana y también ofrecemos instalaciones en diferentes ciudades de Estados Unidos.</p>
+          <div class="flag-pills">
+            <span class="flag-pill"><img src="images/flags/do.svg" alt="República Dominicana" class="flag-icon"> R.D.</span>
+            <span class="flag-pill"><img src="images/flags/us.svg" alt="Estados Unidos" class="flag-icon"> USA</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -214,9 +235,9 @@
         <span class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
 
-      <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20informaci%C3%B3n%20sobre%20el%20GPS%20para%20Motocicletas.%20%C2%BFC%C3%B3mo%20es%20la%20instalaci%C3%B3n%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="svc med reveal svc-violet">
+      <a href="#" class="svc med reveal svc-violet js-quote-open" data-vehicle-type="moto">
         <div class="svc-top">
-          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg></div>
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="17" r="2.4"/><circle cx="18" cy="17" r="2.4"/><path d="M5 17h4.2l2-5h4.3l2.5 5h2"/><path d="M11.2 12l1.8-3.3h3"/></svg></div>
         </div>
         <div class="svc-body">
           <h3>GPS para Motocicletas</h3>
@@ -510,6 +531,72 @@
   </div>
 </section>
 
+<!-- ============================================================ RESEÑAS ============================================================ -->
+<section id="resenas">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="tag">Reseñas</div>
+      <h2 class="h2">Lo que dicen los clientes que ya confían en nosotros.</h2>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-quote">"Me robaron el carro un viernes y el lunes ya lo tenía de vuelta. Coordinaron todo con la policía."</p>
+        <div class="review-person">
+          <img src="https://ui-avatars.com/api/?name=Ramon+Cruz&background=1c1c1e&color=60A5FA&bold=true&size=88" alt="Ramón Cruz" class="review-avatar" loading="lazy">
+          <div>
+            <div class="review-name">Ramón Cruz</div>
+            <div class="review-meta">Santiago, RD · GPS Personal</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-quote">"Tengo 8 vehículos en flota y desde el panel veo todo en tiempo real. Soporte rapidísimo."</p>
+        <div class="review-person">
+          <img src="https://ui-avatars.com/api/?name=Maria+Fernandez&background=1c1c1e&color=60A5FA&bold=true&size=88" alt="María Fernández" class="review-avatar" loading="lazy">
+          <div>
+            <div class="review-name">María Fernández</div>
+            <div class="review-meta">Santo Domingo, RD · GPS para Flotas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-quote">"Instalaron el GPS a mi moto en menos de una hora y ni se nota. Duermo tranquilo."</p>
+        <div class="review-person">
+          <img src="https://ui-avatars.com/api/?name=Luis+Peña&background=1c1c1e&color=60A5FA&bold=true&size=88" alt="Luis Peña" class="review-avatar" loading="lazy">
+          <div>
+            <div class="review-name">Luis Peña</div>
+            <div class="review-meta">La Vega, RD · GPS para Motocicletas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Lightbox (used by gallery) -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="lightbox-frame">
@@ -635,6 +722,15 @@
   <img src="images/ico.webp" alt="WhatsApp">
 </a>
 
+<!-- ============================================================ AUDIO DE BIENVENIDA ============================================================ -->
+<audio id="siteAudio" src="audio/bienvenida.mp3" loop preload="auto"></audio>
+<button type="button" class="audio-float" id="audioToggle" aria-label="Reproducir o pausar audio de bienvenida" aria-pressed="false">
+  <span class="audio-tooltip" id="audioTooltip">🔊 Toca aquí</span>
+  <svg class="audio-icon icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5.5v13l11-6.5-11-6.5z"/></svg>
+  <svg class="audio-icon icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+  <span class="audio-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+</button>
+
 <!-- ============================================================ MODAL: COTIZADOR ============================================================ -->
 <div class="quote-overlay" id="quoteOverlay" aria-hidden="true">
   <div class="quote-modal" role="dialog" aria-modal="true" aria-labelledby="quoteTitle">
@@ -666,6 +762,10 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.25 5.25h14.25v10.5H2.25zM16.5 9.75h4.5l1.5 3.75V16.5h-6V9.75Z"/><circle cx="6.75" cy="18.75" r="1.5"/><circle cx="18" cy="18.75" r="1.5"/></svg>
             <span>Camión</span>
           </button>
+          <button type="button" class="quote-type-btn" data-type="moto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="17" r="2.4"/><circle cx="18" cy="17" r="2.4"/><path d="M5 17h4.2l2-5h4.3l2.5 5h2"/><path d="M11.2 12l1.8-3.3h3"/></svg>
+            <span>Moto</span>
+          </button>
         </div>
       </div>
 
@@ -687,6 +787,99 @@
 
       <button type="submit" class="btn btn-primary quote-submit">
         Enviar cotización por WhatsApp
+        <img src="images/ico.webp" alt="" class="wa-icon-inline">
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================================ MODAL: AGENDAR CITA ============================================================ -->
+<div class="quote-overlay" id="appointmentOverlay" aria-hidden="true">
+  <div class="quote-modal" role="dialog" aria-modal="true" aria-labelledby="appointmentTitle">
+    <button type="button" class="quote-close" id="appointmentClose" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <div class="quote-head">
+      <div class="tag">Agendar cita</div>
+      <h3 id="appointmentTitle">Agenda tu instalación</h3>
+      <p>Cuéntanos sobre tu vehículo, tus datos de contacto y el día que prefieres. Confirmamos la hora exacta por WhatsApp.</p>
+    </div>
+
+    <a href="https://wa.me/18295486665?text=%C2%A1Hola%21%20%F0%9F%91%8B%20Quiero%20agendar%20una%20cita%20para%20instalar%20mi%20GPS%20con%20Padilla%20GPS%20%F0%9F%93%85.%20%C2%BFQu%C3%A9%20d%C3%ADas%20tienen%20disponibles%3F%20%F0%9F%93%8D%E2%9C%85" target="_blank" rel="noopener" class="quote-skip">
+      <img src="images/ico.webp" alt="" class="wa-icon-inline">
+      <span>Prefiero saltar esto y agendar directo por WhatsApp</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <form id="appointmentForm">
+      <div class="quote-field">
+        <label>¿Qué vehículo vas a llevar a la cita?</label>
+        <div class="quote-type-grid">
+          <button type="button" class="quote-type-btn" data-type="vehiculo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l1.6-4.8A2 2 0 0 1 6.5 7h11a2 2 0 0 1 1.9 1.2L21 13v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H6v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5Z"/><circle cx="7.5" cy="16.5" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></svg>
+            <span>Vehículo</span>
+          </button>
+          <button type="button" class="quote-type-btn" data-type="camion">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.25 5.25h14.25v10.5H2.25zM16.5 9.75h4.5l1.5 3.75V16.5h-6V9.75Z"/><circle cx="6.75" cy="18.75" r="1.5"/><circle cx="18" cy="18.75" r="1.5"/></svg>
+            <span>Camión</span>
+          </button>
+          <button type="button" class="quote-type-btn" data-type="moto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="17" r="2.4"/><circle cx="18" cy="17" r="2.4"/><path d="M5 17h4.2l2-5h4.3l2.5 5h2"/><path d="M11.2 12l1.8-3.3h3"/></svg>
+            <span>Moto</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="quote-field-row">
+        <div class="quote-field">
+          <label for="apptMarca">Marca</label>
+          <input type="text" id="apptMarca" name="marca" placeholder="Ej. Toyota, Hyundai, Kia…" autocomplete="off">
+        </div>
+        <div class="quote-field">
+          <label for="apptModelo">Modelo</label>
+          <input type="text" id="apptModelo" name="modelo" placeholder="Ej. Corolla, Tucson…" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="quote-field">
+        <label for="apptAnio">Año</label>
+        <input type="text" inputmode="numeric" id="apptAnio" name="anio" placeholder="Ej. 2021" autocomplete="off">
+      </div>
+
+      <div class="quote-field">
+        <label for="apptNombre">Nombre completo</label>
+        <input type="text" id="apptNombre" name="nombre" placeholder="Ej. Juan Pérez" autocomplete="name" required>
+      </div>
+
+      <div class="quote-field-row">
+        <div class="quote-field">
+          <label for="apptCorreo">Correo electrónico</label>
+          <input type="email" id="apptCorreo" name="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email">
+        </div>
+        <div class="quote-field">
+          <label for="apptTelefono">Teléfono</label>
+          <input type="tel" id="apptTelefono" name="telefono" placeholder="Ej. 809-000-0000" autocomplete="tel" required>
+        </div>
+      </div>
+
+      <div class="quote-field-row">
+        <div class="quote-field">
+          <label for="apptFecha">Fecha preferida</label>
+          <input type="date" id="apptFecha" name="fecha" required>
+        </div>
+        <div class="quote-field">
+          <label for="apptHora">Horario preferido</label>
+          <select id="apptHora" name="hora">
+            <option value="">Cualquiera</option>
+            <option value="Mañana (8:00am - 12:00pm)">Mañana (8:00am - 12:00pm)</option>
+            <option value="Tarde (12:00pm - 5:00pm)">Tarde (12:00pm - 5:00pm)</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary quote-submit">
+        Confirmar cita por WhatsApp
         <img src="images/ico.webp" alt="" class="wa-icon-inline">
       </button>
     </form>
